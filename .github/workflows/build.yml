@@ -26,13 +26,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          # Строка cache удалена, чтобы не требовать package-lock.json
 
       - name: Install dependencies
         run: npm install
 
       - name: Build site
         run: npm run build
+
+      - name: Debug: Check dist folder contents
+        run: |
+          echo "=== Содержимое папки dist ==="
+          ls -la dist/
+          echo "=== Размер index.html ==="
+          wc -c dist/index.html || echo "ОШИБКА: index.html не найден!"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
