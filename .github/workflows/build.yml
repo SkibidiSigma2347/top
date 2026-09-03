@@ -19,10 +19,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -32,13 +32,6 @@ jobs:
 
       - name: Build site
         run: npm run build
-
-      - name: Debug: Check dist folder contents
-        run: |
-          echo "=== Содержимое папки dist ==="
-          ls -la dist/
-          echo "=== Размер index.html ==="
-          wc -c dist/index.html || echo "ОШИБКА: index.html не найден!"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
