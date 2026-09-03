@@ -1258,8 +1258,9 @@
     </div>
 
     <script>
+        window.siteData = {"categories":[]};
         // ==================== DATA ====================
-           const siteData = __SITE_DATA__;
+        const siteData = window.siteData || {};
 
         // ==================== PAGE CONTENT ====================
         const pageContent = /* PAGE_CONTENT */ {};
