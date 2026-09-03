@@ -1,7 +1,6 @@
 {
   "name": "conspex-4-course",
   "version": "1.0.0",
-  "description": "Конспекты 4-го курса",
   "scripts": {
     "build": "node scripts/build.js"
   },
