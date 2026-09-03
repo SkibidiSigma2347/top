@@ -78,19 +78,21 @@ function build() {
     const categories = readDocsDir(DOCS_DIR);
     const template = fs.readFileSync(TEMPLATE_PATH, 'utf-8');
 
-    // Заменяем плейсхолдеры в шаблоне
-    let html = template;
+    // Создаём объект с данными
+    const siteData = { categories };
     
-    // Вставляем данные
-    html = html.replace('/* SITE_DATA */', JSON.stringify({ categories }, null, 2));
-    html = html.replace(/Конспекты/g, 'Конспекты 4-го курса');
+    // Сериализуем данные в JSON
+    const siteDataJSON = JSON.stringify(siteData, null, 2);
+    
+    // Заменяем плейсхолдер в шаблоне
+    let html = template.replace('/* SITE_DATA */', siteDataJSON);
 
     // Сохраняем результат
     const outputPath = path.join(OUTPUT_DIR, 'index.html');
     fs.writeFileSync(outputPath, html);
 
-    console.log(`✅ Сайт собран! Файлов: ${categories.reduce((sum, cat) => sum + cat.pages.length, 0)}`);
-    console.log(`📁 Выход: ${outputPath}`);
+    console.log(`✅ Сайт собран! Категорий: ${categories.length}, Страниц: ${categories.reduce((sum, cat) => sum + cat.pages.length, 0)}`);
+    console.log(` Выход: ${outputPath}`);
 }
 
 build();
