@@ -1275,7 +1275,7 @@
             let html = '';
 
             // Home link
-            html += `<a class="nav-item ${currentPage === 'home' ? 'active' : ''}" onclick="navigateTo('home')" style="padding-left: 20px; margin-bottom: 8px; font-weight: 500;">
+            html += `<a class="nav-item ${currentPage === 'home' ? 'active' : ''}" onclick="navigateTo('home'); return false;" style="padding-left: 20px; margin-bottom: 8px; font-weight: 500;">
                 <svg class="item-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 8L8 3l5.5 5M4 7v6a1 1 0 001 1h2.5V10.5h1v3.5H11a1 1 0 001-1V7"/></svg>
                 Главная
             </a>`;
@@ -1292,7 +1292,7 @@
                 cat.pages.forEach(page => {
                     const pageId = page.id;
                     const isActive = currentPage === pageId;
-                    html += `<a class="nav-item ${isActive ? 'active' : ''}" onclick="navigateTo('${pageId}')">
+                    html += `<a class="nav-item ${isActive ? 'active' : ''}" onclick="navigateTo('${pageId}'); return false;">
                         <svg class="item-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 1.5h5l4 4V13.5a1 1 0 01-1 1H4a1 1 0 01-1-1V2.5a1 1 0 011-1z"/><path d="M9 1.5v4h4"/></svg>
                         ${page.title}
                         ${page.badge ? `<span class="page-badge">${page.badge}</span>` : ''}
@@ -1320,7 +1320,7 @@
                             <div class="hero-cards">
                                 ${siteData.categories.map(cat => {
                                     const firstPage = cat.pages[0];
-                                    return `<a class="hero-card" onclick="navigateTo('${firstPage.id}')">
+                                    return `<a class="hero-card" onclick="navigateTo('${firstPage.id}'); return false;">
                                         <h3>${cat.title}</h3>
                                         <div class="card-count">
                                             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 1h4l3 3v6.5a.5.5 0 01-.5.5h-6a.5.5 0 01-.5-.5v-9a.5.5 0 01.5-.5z"/></svg>
