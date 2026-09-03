@@ -1259,7 +1259,7 @@
 
     <script>
         // ==================== DATA ====================
-        const siteData = /* SITE_DATA */ {};
+           const siteData = __SITE_DATA__;
 
         // ==================== PAGE CONTENT ====================
         const pageContent = /* PAGE_CONTENT */ {};
@@ -1279,7 +1279,7 @@
                 Главная
             </a>`;
 
-            siteData.categories.forEach(cat => {
+            .categories.forEach(cat => {
                 const isCollapsed = false;
                 html += `<div class="nav-category">
                     <div class="nav-category-header ${isCollapsed ? 'collapsed' : ''}" onclick="toggleCategory(this)">
@@ -1317,7 +1317,7 @@
                             <h1>Конспекты 4-го курса</h1>
                             <p>База знаний с конспектами. Markdown файлы автоматически превращаются в красивую документацию.</p>
                             <div class="hero-cards">
-                                ${siteData.categories.map(cat => {
+                                ${.categories.map(cat => {
                                     const firstPage = cat.pages[0];
                                     return `<a class="hero-card" onclick="navigateTo('${firstPage.id}')">
                                         <h3>${cat.title}</h3>
@@ -1343,7 +1343,7 @@
             tocSidebar.style.display = '';
 
             // Find category
-            const category = siteData.categories.find(c => c.id === page.category);
+            const category = .categories.find(c => c.id === page.category);
             const pageData = category?.pages.find(p => p.id === pageId);
 
             // Breadcrumb
@@ -1410,7 +1410,7 @@
 
         function getAllPages() {
             const pages = [];
-            siteData.categories.forEach(cat => {
+            .categories.forEach(cat => {
                 cat.pages.forEach(page => {
                     pages.push({ id: page.id, title: page.title, category: cat.title });
                 });
